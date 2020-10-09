@@ -96,7 +96,7 @@ public class Controller {
 
     @GetMapping("/getStoreInfo")
     @ApiOperation(value = "점포 상세정보 조회 API")
-    public StoreDetail getStoreInfo(@RequestBody Long id){
+    public StoreDetail getStoreInfo(@RequestParam("id") Long id){
         logger.info("get one store info");
         StoreDetail result = null;
 
@@ -118,7 +118,7 @@ public class Controller {
 
     @DeleteMapping("/deleteStore")
     @ApiOperation(value = "점포 삭제 API")
-    public int deleteStore(@RequestBody Long id){
+    public int deleteStore(@RequestParam("id") Long id){
         logger.info("delete store");
 
         try {

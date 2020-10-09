@@ -3,6 +3,7 @@
     - 사용 FrameWork : Spring boot
     - Java Version : 8
     - JDK Version : 1.8    
+    - 빌드환경 : Maven
     - 사용 DB : H2
     - DB 연결 URL : jdbc:h2:~/pirate;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=true;
     - DB Username : sa
