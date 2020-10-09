@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +39,12 @@ public class StoreService {
 
     public Store registHoliday(Store store) {
         Store temp = storeRepo.findById(store.getId()).get();
-        temp.setHolidays(store.holidays);
+
+        List<String> list = temp.getHolidays();
+        for (String t : store.getHolidays()) {
+            if(!list.contains(t)) list.add(t);
+        }
+        temp.setHolidays(list);
         return temp;
     }
 }

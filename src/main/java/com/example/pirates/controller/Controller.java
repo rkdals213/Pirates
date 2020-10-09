@@ -26,13 +26,13 @@ public class Controller {
         try {
             result = storeService.save(store);
         }catch (RuntimeException e){
-
+            logger.error(e.toString());
         }
 
         return result;
     }
 
-    @PostMapping("/getStoreInfo")
+    @GetMapping("/getStoreInfo")
     public StoreDetail getStoreInfo(@RequestBody Long id){
         logger.info("get one store info");
         StoreDetail result = null;
@@ -40,7 +40,7 @@ public class Controller {
         try {
             result = storeService.findById(id).get();
         }catch (RuntimeException e){
-
+            logger.error(e.toString());
         }
 
         return result;
@@ -54,20 +54,20 @@ public class Controller {
         try {
             storeService.deleteById(id);
         }catch (RuntimeException e){
-
+            logger.error(e.toString());
         }
 
         return result;
     }
 
-    @PostMapping("/getStores")
+    @GetMapping("/getStores")
     public List<StoreStatus> getStores(){
         logger.info("get stores");
         List<StoreStatus> list = null;
         try {
             list = storeService.getList();
         }catch (RuntimeException e){
-
+            logger.error(e.toString());
         }
 
         return list;
@@ -81,7 +81,7 @@ public class Controller {
         try {
             result = storeService.registHoliday(store);
         }catch (RuntimeException e){
-
+            logger.error(e.toString());
         }
 
         return result;
