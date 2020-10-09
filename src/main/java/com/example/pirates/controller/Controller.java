@@ -71,7 +71,7 @@ public class Controller {
     /**
      * 점포 목록 조회 API
      * @param
-     * @return List<store>
+     * @return List<StoreStatus>
      */
 
     @GetMapping("/getStores")
