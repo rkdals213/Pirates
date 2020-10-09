@@ -31,7 +31,7 @@ public interface StoreStatus {
         else {
             format = new SimpleDateFormat("E", Locale.ENGLISH);
             today = format.format(date);
-            System.out.println(today);
+
             Set<BusinessTimes> businessTimes = getBusinessTimes();
             for (BusinessTimes b : businessTimes) {
                 if (!b.getDay().contains(today)) continue;

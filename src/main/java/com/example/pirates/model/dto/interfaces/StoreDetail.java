@@ -44,7 +44,6 @@ public interface StoreDetail {
             int month = calendar.get(calendar.MONTH) + 1;
             int day = calendar.get(calendar.DATE) + cnt2;
             int dow = (calendar.get(calendar.DAY_OF_WEEK) + cnt2 - 1) % 7;
-            System.out.println(dayOfWeek[dow]);
 
             if (year % 4 == 0 && year % 100 != 0 && year % 400 == 0) daysOfMonth[1] = 29;
 
@@ -87,7 +86,7 @@ public interface StoreDetail {
 
                         SimpleDateFormat format = new SimpleDateFormat("E", Locale.ENGLISH);
                         String todayofweek = format.format(new Date());
-                        System.out.println(todayofweek + "================");
+
                         if (nowTime >= openTime && nowTime <= closeTime && bs.getDay().contains(todayofweek))
                             map.put("status", "OPEN");
                         else map.put("status", "CLOSE");
