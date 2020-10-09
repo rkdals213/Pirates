@@ -2,14 +2,13 @@ package com.example.pirates.model.service;
 
 import com.example.pirates.model.dao.StoreRepo;
 import com.example.pirates.model.dto.Store;
-import com.example.pirates.model.dto.StoreDetail;
-import com.example.pirates.model.dto.StoreStatus;
+import com.example.pirates.model.dto.interfaces.StoreDetail;
+import com.example.pirates.model.dto.interfaces.StoreStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,15 +16,19 @@ import java.util.Optional;
 @Transactional
 public class StoreService {
 
+    private StoreRepo storeRepo;
+
     @Autowired
-    StoreRepo storeRepo;
+    public StoreService(StoreRepo storeRepo) {
+        Assert.notNull(storeRepo, "storeRepo 개체가 반드시 필요!");
+        this.storeRepo = storeRepo;
+    }
 
     public Store save(Store store) {
         return storeRepo.save(store);
     }
 
     public List<StoreStatus> getList() {
-//
         return storeRepo.findAllByOrderByLevelDesc();
     }
 

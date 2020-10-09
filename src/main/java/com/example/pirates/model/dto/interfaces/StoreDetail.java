@@ -1,5 +1,6 @@
-package com.example.pirates.model.dto;
+package com.example.pirates.model.dto.interfaces;
 
+import com.example.pirates.model.dto.BusinessTimes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.text.SimpleDateFormat;

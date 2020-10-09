@@ -1,6 +1,6 @@
-package com.example.pirates.model.dto;
+package com.example.pirates.model.dto.interfaces;
 
-import com.example.pirates.Handler.Handler;
+import com.example.pirates.model.dto.BusinessTimes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.text.SimpleDateFormat;
@@ -40,12 +40,12 @@ public interface StoreStatus {
 
                 SimpleDateFormat format2 = new SimpleDateFormat("HH:mm");
                 String now = format2.format(new Date());
-                StringTokenizer now2 = new StringTokenizer(now,":");
+                StringTokenizer now2 = new StringTokenizer(now, ":");
 
                 int openTime = Integer.parseInt(open.nextToken()) * 60 + Integer.parseInt(open.nextToken());
                 int closeTime = Integer.parseInt(close.nextToken()) * 60 + Integer.parseInt(close.nextToken());
                 int nowTime = Integer.parseInt(now2.nextToken()) * 60 + Integer.parseInt(now2.nextToken());
-                if(nowTime >= openTime && nowTime <= closeTime) return "OPEN";
+                if (nowTime >= openTime && nowTime <= closeTime) return "OPEN";
             }
         }
 

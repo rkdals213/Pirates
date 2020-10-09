@@ -1,4 +1,4 @@
-package com.example.pirates.model.dto;
+package com.example.pirates.model.dto.interfaces;
 
 import com.example.pirates.model.dao.StoreRepo;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,14 +1,16 @@
 package com.example.pirates.controller;
 
-import com.example.pirates.model.dao.StoreRepo;
 import com.example.pirates.model.dto.*;
+import com.example.pirates.model.dto.interfaces.StoreDetail;
+import com.example.pirates.model.dto.interfaces.StoreStatus;
 import com.example.pirates.model.service.StoreService;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @CrossOrigin(origins = { "*" })
@@ -16,10 +18,22 @@ import java.util.*;
 public class Controller {
     static Logger logger = LoggerFactory.getLogger(Controller.class);
 
+    private StoreService storeService;
+
     @Autowired
-    StoreService storeService;
+    public Controller(StoreService storeService) {
+        Assert.notNull(storeService, "storeService 개체가 반드시 필요!");
+        this.storeService = storeService;
+    }
+
+    /**
+    * 점포 추가 API
+    * @param store
+    * @return store
+    */
 
     @PostMapping("/registStore")
+    @ApiOperation(value = "점포 추가 API")
     public Store registStore(@RequestBody Store store){
         logger.info("regist store");
         Store result = null;
@@ -32,7 +46,56 @@ public class Controller {
         return result;
     }
 
+    /**
+     * 점포 휴무일 등록 API
+     * @param store
+     * @return store
+     */
+
+    @PostMapping("/registHoliday")
+    @ApiOperation(value = "점포 휴무일 등록 API")
+    public Store registHoliday(@RequestBody Store store){
+        logger.info("regist holiday");
+
+        Store result = null;
+        try {
+            result = storeService.registHoliday(store);
+        }catch (RuntimeException e){
+            logger.error(e.toString());
+        }
+
+        return result;
+    }
+
+
+    /**
+     * 점포 목록 조회 API
+     * @param
+     * @return List<store>
+     */
+
+    @GetMapping("/getStores")
+    @ApiOperation(value = "점포 목록 조회 API")
+    public List<StoreStatus> getStores(){
+        logger.info("get stores");
+        List<StoreStatus> list = null;
+        try {
+            list = storeService.getList();
+        }catch (RuntimeException e){
+            logger.error(e.toString());
+        }
+
+        return list;
+    }
+
+    /**
+     * 점포 상세정보 조회 API
+     * @param id
+     * @return storeDetail
+     */
+
     @GetMapping("/getStoreInfo")
+    @ApiOperation(value = "점포 상세정보 조회 API")
     public StoreDetail getStoreInfo(@RequestBody Long id){
         logger.info("get one store info");
         StoreDetail result = null;
@@ -46,44 +109,25 @@ public class Controller {
         return result;
     }
 
+
+    /**
+     * 점포 삭제 API
+     * @param id
+     * @return int
+     */
+
     @DeleteMapping("/deleteStore")
-    public Store deleteStore(@RequestBody Long id){
+    @ApiOperation(value = "점포 삭제 API")
+    public int deleteStore(@RequestBody Long id){
         logger.info("delete store");
-        Store result = null;
 
         try {
             storeService.deleteById(id);
         }catch (RuntimeException e){
             logger.error(e.toString());
+            return 0;
         }
 
-        return result;
-    }
-
-    @GetMapping("/getStores")
-    public List<StoreStatus> getStores(){
-        logger.info("get stores");
-        List<StoreStatus> list = null;
-        try {
-            list = storeService.getList();
-        }catch (RuntimeException e){
-            logger.error(e.toString());
-        }
-
-        return list;
-    }
-
-    @PostMapping("/registHoliday")
-    public Store registHoliday(@RequestBody Store store){
-        logger.info("regist holiday");
-
-        Store result = null;
-        try {
-            result = storeService.registHoliday(store);
-        }catch (RuntimeException e){
-            logger.error(e.toString());
-        }
-
-        return result;
+        return 1;
     }
 }

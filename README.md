@@ -3,10 +3,10 @@
     - 사용 FrameWork : Spring boot
     - Java Version : 8
     - JDK Version : 1.8    
+    - 사용 DB : H2
     - DB 연결 URL : jdbc:h2:~/pirate;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=true;
     - DB Username : sa
-    - DB Password : 
-    
+    - DB Password :     
     
 2. 테이블 생성 SQL : 프로젝트 실행시 자동 생성
     - 자동생성 불가시
