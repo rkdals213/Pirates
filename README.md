@@ -11,7 +11,6 @@
     - DB Password :    
     
 2. 테이블 생성 SQL : 프로젝트 실행시 자동 생성 (jpa)
-    - 자동생성 불가시
     ```
     create table STORE
     (
