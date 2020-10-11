@@ -11,6 +11,7 @@
     - DB Password :    
     
 2. 테이블 생성 SQL : 프로젝트 실행시 자동 생성 (jpa)
+
 ![DB_Diagram](https://user-images.githubusercontent.com/56009774/95680623-f3427f00-0c15-11eb-8264-b9ae22c00f94.PNG)
 
     ```
