@@ -27,7 +27,7 @@
         OWNER       VARCHAR(255),
         PHONE       VARCHAR(255)
     );
-    ```
+    
     create table BUSINESS_TIMES
     (
         ID       BIGINT auto_increment
@@ -39,8 +39,7 @@
         constraint FKNVMYAR2EJURV0SP4K2IPCD0RA
             foreign key (STORE_ID) references STORE (ID)
     );
-    ```
-    ```
+    
     create table STORE_HOLIDAYS
     (
         STORE_ID BIGINT not null,
@@ -48,7 +47,6 @@
         constraint FKAF1G6QHYX1KKAITJXW6GE5CSA
             foreign key (STORE_ID) references STORE (ID)
     );
-    ```
 
 3. API 사용가이드
     - 테스트 환경 : Swagger2
