@@ -14,7 +14,8 @@
 
 ![DB_Diagram](https://user-images.githubusercontent.com/56009774/95680623-f3427f00-0c15-11eb-8264-b9ae22c00f94.PNG)
 
-    ```
+
+   
     create table STORE
     (
         ID          BIGINT auto_increment
@@ -26,7 +27,6 @@
         OWNER       VARCHAR(255),
         PHONE       VARCHAR(255)
     );
-    ```
     ```
     create table BUSINESS_TIMES
     (
